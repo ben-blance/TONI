@@ -2,7 +2,7 @@
 ![2-removebg-preview](https://github.com/ben-blance/TONI/assets/147723363/f585c183-a717-4d64-ba70-520257cd38c6)
 
 
-Welcome to TONI, your intelligent AI assistant powered by OpenAI's GPT-3.5 Turbo. Engage in natural language conversations, get real-time news updates, play your favorite music, and more!
+Welcome to TONI, your intelligent AI assistant. Engage in natural language conversations, get real-time news updates, play your favorite music, and more!
 
 ## Features
 
