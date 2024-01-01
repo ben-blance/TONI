@@ -1,0 +1,128 @@
+
+Certainly, Nakama Script is a programming language developed by Ben Blance. It is designed to simplify the process of creating chatbot conversations by providing a user-friendly syntax and powerful features.
+
+With Nakama Script, developers can easily define and structure conversational flows, specify user prompts and system responses, handle user inputs, and incorporate dynamic variables and conditions. It also supports multi-turn conversations, allowing for a more interactive and natural chatbot experience.
+
+Nakama Script aims to make chatbot development more accessible for both experienced developers and those new to programming. Its intuitive syntax and extensive documentation make it easier to create and maintain complex conversational logic.
+
+Overall, Nakama Script empowers developers to build sophisticated chatbot interactions that can understand, respond to, and engage with users in a more personalized and dynamic manner.
+
+This is the syntax of my own programming language named as nakama-script: statements  : NEWLINE* statement (NEWLINE+ statement)* NEWLINE*
+
+statement		: KEYWORD:RETURN expr?
+						: KEYWORD:CONTINUE
+						: KEYWORD:BREAK
+						: expr
+
+expression     : KEYWORD: nakama identifier eq expression
+               : comp-exp (KEYWORD = && (and) | KEYWORD = || (or)) comp-exp*
+               
+comp-exp       : KEYWORD ~(not) comp-exp
+               : arith-exp (ee, lt, gt, lte, gte) arith-exp*
+               
+arith-exp : term ((PLUS | Minus) term )*
+
+term          : factor ((MUL|DIV)factor)*
+
+factor        : (PLUS|Minus)factor
+              : power  
+
+power         : call (power float)*      
+
+call:         : atom (LPAREN (expr (COMMA expr)*)? RPAREN)?
+
+atom          : int|float|string|identifier
+              : lparan expression rparan
+              : list-expr
+              : if_exprna
+              : for-expr
+			  : while-expr
+              : func-def
+
+list-expr		: LSQUARE (expr (COMMA expr)*)? RSQUARE
+
+if-expr     : KEYWORD:IF expr KEYWORD:THEN
+              (statement if-expr-b|if-expr-c?)
+            | (NEWLINE statements KEYWORD:END|if-expr-b|if-expr-c)
+
+if-expr-b   : KEYWORD:ELIF expr KEYWORD:THEN
+              (statement if-expr-b|if-expr-c?)
+            | (NEWLINE statements KEYWORD:END|if-expr-b|if-expr-c)
+
+if-expr-c   : KEYWORD:ELSE
+              statement
+            | (NEWLINE statements KEYWORD:END)
+
+for-expr    : KEYWORD:FOR IDENTIFIER EQ expr KEYWORD:TO expr 
+              (KEYWORD:STEP expr)? KEYWORD:THEN
+              statement
+            | (NEWLINE statements KEYWORD:END)
+
+while-expr  : KEYWORD:WHILE expr KEYWORD:THEN
+              statements
+            | (NEWLINE statements KEYWORD:END)
+
+func-def    : KEYWORD:FUN IDENTIFIER?
+              LPAREN (IDENTIFIER (COMMA IDENTIFIER)*)? RPAREN
+              (ARROW expr)
+            | (NEWLINE statements KEYWORD:END)
+
+(1 +2 ) == (1 + 2) correct way
+1 + (2 == 1) + 1   incorrect way
+
+
+nakama   ships          =   10
+variable variable_name  =  <expression>
+^           ^           ^
+keyword  identifier     equal
+
+
+leftNode
+RightNode
+SymbolTable
+
+
+
+
+#if statement syntax:
+    
+    if <condition*> then <expression*> elseif <condition*> then <expression*> else <expression*>
+    
+    example: 
+
+    nakama ships_age = 10
+    nakama ships_price = if ships_age >= 10 then 200mb else 100mb                  //mb = million_berries
+    
+#for statement syntax:
+
+    for <namaka_name*> = <start_value> to <end_value> then <expression>
+    
+    example:
+
+    nakama luffys_hunger_for_meat = 26
+    for  = meat_cooking_time = 1 to 50 then luffys_hunger_for_meat = result * i
+
+    Keyword: raise(increment/step) to update or modify the increment in for
+    eg: for i = 0 to 10 raise 2 then ...
+
+    simple codes:
+
+    gears fibonacci(n) ->
+    if n <= 0 then
+        return 0
+    elseif n == 1 then
+        return 1
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2)
+    end
+end
+
+nakama n = 10
+nakama result = fibonacci(n)
+
+print("Fibonacci sequence ")
+print(n)
+
+for i = 1 to n then
+    print(fibonacci(i))
+end
